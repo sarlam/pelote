@@ -1,11 +1,10 @@
 <template>
-  <div id="app">
-    <div id="nav">
-      <router-link to="/">Home</router-link> |
-      <router-link to="/about">About</router-link>
-    </div>
-    <router-view/>
-  </div>
+  <!-- Main Framework7 App component where we pass Framework7 params -->
+  <f7-app :params="$root.f7params">
+    <f7-statusbar></f7-statusbar>
+    <!-- initial page is specified in routes.js -->
+    <f7-view main url="/"></f7-view>
+  </f7-app>
 </template>
 
 <style lang="scss">

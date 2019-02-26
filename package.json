@@ -35,6 +35,8 @@
     "chai": "^4.1.2",
     "eslint": "^5.8.0",
     "eslint-plugin-vue": "^5.0.0",
+    "framework7": "^4.0.6",
+    "framework7-vue": "^4.0.6",
     "node-sass": "^4.9.0",
     "sass-loader": "^7.1.0",
     "vue-cli-plugin-cordova": "^2.1.2",

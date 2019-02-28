@@ -1,5 +1,7 @@
 // Import F7 Bundle
 import 'framework7/css/framework7.bundle.css'
+import 'framework7-icons/fonts/Framework7Icons-Regular.ttf'
+import 'framework7-icons/css/framework7-icons.css'
 import Framework7 from 'framework7/framework7.esm.bundle.js'
 
 // Import F7-Vue Plugin Bundle (with all F7 components registered)

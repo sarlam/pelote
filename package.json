@@ -19,6 +19,8 @@
     "cordova-serve-ios": "vue-cli-service cordova-serve-ios"
   },
   "dependencies": {
+    "framework7-icons": "^2.2.0",
+    "moment": "^2.24.0",
     "vue": "^2.6.6",
     "vue-router": "^3.0.1",
     "vuex": "^3.0.1"

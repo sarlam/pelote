@@ -268,7 +268,7 @@ export default {
         {
           values: (function () {
             const val = []
-            for (let i = 0; i <= today.getDate(); i++) {
+            for (let i = 1; i <= 31; i++) {
               val.push(i)
             }
             return val
@@ -293,7 +293,7 @@ export default {
         {
           values: (function () {
             const arr = []
-            for (let i = 0; i <= today.getHours(); i++) {
+            for (let i = 0; i <= 23; i++) {
               arr.push(i)
             }
             return arr
@@ -309,7 +309,7 @@ export default {
         {
           values: (function () {
             const arr = []
-            for (let i = 0; i <= today.getMinutes(); i++) {
+            for (let i = 0; i <= 59; i++) {
               arr.push(i < 10 ? '0' + i : i)
             }
             return arr
@@ -318,10 +318,19 @@ export default {
       ],
       on: {
         change: function (picker, values, displayValues) {
-          self.form.q3 = getMomentFromValues(values).format()
           const daysInMonth = new Date(picker.value[2], picker.value[0] * 1 + 1, 0).getDate()
+          self.form.q3 = getMomentFromValues(values).format()
           if (values[1] > daysInMonth) {
             picker.cols[1].setValue(daysInMonth)
+          }
+          if (getMomentFromValues(values).isAfter(moment().add('5', 'minutes'), 'minutes')) {
+            picker.cols[0].setValue(initialValues[0])
+            picker.cols[1].setValue(initialValues[1])
+            picker.cols[2].setValue(initialValues[2])
+            // divider
+            picker.cols[4].setValue(initialValues[3])
+            // divider
+            picker.cols[6].setValue(initialValues[4])
           }
         }
       }

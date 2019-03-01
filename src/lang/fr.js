@@ -23,7 +23,7 @@ export default {
       },
       1: {
         A: {
-          title: 'More precisely',
+          title: 'Plus Précisement',
           answers: {
             A: 'Comments indicating that certain roles are more appropriate for either men or women',
             B: 'Comments indicating that men have greater ability in gender-stereotypic domains',
@@ -34,7 +34,7 @@ export default {
           }
         },
         B: {
-          title: 'More precisely',
+          title: 'Plus Précisement',
           answers: {
             A: 'use of demeaning labels (such as “bitch” or “chick”),',
             B: 'making sexist jokes,',
@@ -45,7 +45,7 @@ export default {
           }
         },
         C: {
-          title: 'More precisely',
+          title: 'Plus Précisement',
           answers: {
             A: 'Comment that reduce women to her body',
             B: 'Unwanted flirting,',

@@ -370,9 +370,7 @@ export default {
 
       if (_.isNull(q2)) return false
 
-      if (_.isNull(q3)) return false
-
-      return true
+      return !_.isNull(q3);
     },
     newIncident () {
       const { q1, q11, q2, q3, q4, q4Other, q5, q6, q7, q8, q9, q10 } = this.form

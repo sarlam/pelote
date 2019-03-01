@@ -17,7 +17,13 @@ export default new Vuex.Store({
   },
   getters: {
     todayIncidents (state) {
-      state.incidents.filter(i => m(i.date).isSame(new Date(), 'day'))
+      return state.incidents
+        .filter(i => m(i.date).isSame(new Date(), 'day'))
+        .map(i => {
+          i.mDate = m(i.date).toDate()
+          return i
+        })
+      // TODO: sort sur la date
     }
   },
   mutations: {

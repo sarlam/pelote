@@ -1,6 +1,6 @@
 <template>
   <f7-page name="about">
-    <f7-navbar title="about"></f7-navbar>
+    <f7-navbar title="about" back-link back-link-url="/"></f7-navbar>
     <!-- Page content -->
     qzefqzefqzef ze
     ef

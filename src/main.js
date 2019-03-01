@@ -35,8 +35,9 @@ new Vue({
         // App Name
         name: 'pelotte',
         // App id
-        id: 'me.jarleton.pelotte'
-        // ...
+        id: 'me.jarleton.pelotte',
+        // ...,
+        material: true
       }
     }
   },

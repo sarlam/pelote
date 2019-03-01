@@ -1,14 +1,21 @@
 <template>
   <f7-block>
-    <div class="timeline-item">
-      <div class="timeline-item-date">21 <small>DEC</small></div>
+    <f7-block v-if="todayIncidents.length === 0">
+      Your day is going great so far !
+    </f7-block>
+
+    <div v-for="incident in todayIncidents" :key="incident.date" class="timeline-item">
+      <div class="timeline-item-date">
+        <small>{{$d(incident.mDate, 'long')}}</small>
+      </div>
       <div class="timeline-item-divider"></div>
       <div class="timeline-item-content">
         <div class="timeline-item-inner">
-          <div class="timeline-item-time">12:30</div>
-          <div class="timeline-item-title">Title</div>
-          <div class="timeline-item-subtitle">Subtitle</div>
-          <div class="timeline-item-text">Text</div>
+          <div class="timeline-item-time">
+            {{incident.mDate.getHours()}}:{{incident.mDate.getMinutes()}}
+          </div>
+          <div class="timeline-item-title">{{$t('add.q1.answers.'+incident.q1)}}</div>
+          <div class="timeline-item-subtitle">{{$t('add.q1.answers.'+incident.q2)}}</div>
         </div>
       </div>
     </div>
@@ -16,7 +23,12 @@
 </template>
 
 <script>
+import { mapGetters } from 'vuex'
+
 export default {
-  name: 'p-incident-daily-report'
+  name: 'p-incident-daily-report',
+  computed: {
+    ...mapGetters(['todayIncidents'])
+  }
 }
 </script>

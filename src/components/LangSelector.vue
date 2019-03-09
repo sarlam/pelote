@@ -10,6 +10,8 @@
 </template>
 
 <script>
+import { mapMutations } from 'vuex'
+
 export default {
   name: 'p-lang-selector',
   created () {
@@ -26,9 +28,11 @@ export default {
     }
   },
   methods: {
+    ...mapMutations({ setLang: 'SET_LANG' }),
     updateLang (lang) {
       if (this.availableLang.includes(lang)) {
         this.$i18n.locale = lang
+        this.setLang(lang)
       }
     }
   }

@@ -13,7 +13,8 @@ const vuexPersist = new VuexPersist({
 
 export default new Vuex.Store({
   state: {
-    incidents: []
+    incidents: [],
+    locale: null
   },
   getters: {
     todayIncidents (state) {
@@ -30,6 +31,9 @@ export default new Vuex.Store({
     ADD_INCIDENT (state, incident) {
       // TODO: check incident integrity
       state.incidents.push(incident)
+    },
+    SET_LANG (state, lang) {
+      state.locale = lang
     }
   },
   actions: {},

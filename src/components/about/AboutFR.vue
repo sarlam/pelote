@@ -10,7 +10,6 @@
     </p>
     <p>
       Pour lutter contre les effets de ce sexisme ordinaire, cette application vise à :
-
     </p>
     <ul>
       <li>Permettre aux femmes et aux hommes de prendre conscience de son niveau d’exposition;</li>
@@ -36,11 +35,10 @@
     <h1>Infos</h1>
     <h2>Version {{ info.version }}</h2>
     <h2>License</h2>
-    <p>Cette application vous est distribue sous license <b @click="openLicense">GPLv3</b>, elle vous ai fourni sans aucune forme de garantie.</p>
+    <p>Cette application vous est distribue sous license <b>GPLv3</b>, elle vous ai fourni sans aucune forme de garantie.</p>
     <p>Vous pouvez a tout moment acceder au code source de cette application sur <a href="#" @click="openGithub">github - {{ info.repository }}</a></p>
 
     <license></license>
-
   </f7-block>
 </template>
 

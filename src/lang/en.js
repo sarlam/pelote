@@ -2,7 +2,7 @@ export default {
   menu: {
     main: {
       about: 'About',
-      language: 'Language',
+      language: 'Language'
     }
   },
   global: {

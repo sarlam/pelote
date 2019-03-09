@@ -13,14 +13,20 @@ import App from './App.vue'
 import routes from './router'
 import store from './store'
 
+import { isNull } from 'lodash'
+
 Vue.config.productionTip = false
 
 Framework7.use(Framework7Vue)
 Vue.use(VueI18n)
 
+if (isNull(store.state.locale)) {
+  store.commit('SET_LANG', 'en')
+}
+
 // Create VueI18n instance with options
 const i18n = new VueI18n({
-  locale: 'en', // set locale
+  locale: store.state.locale, // set locale
   fallbackLocale: 'en',
   messages, // set locale messages
   dateTimeFormats

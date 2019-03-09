@@ -2,7 +2,7 @@ export default {
   menu: {
     main: {
       about: 'A Propos',
-      language: 'Langage',
+      language: 'Langage'
     }
   },
   global: {

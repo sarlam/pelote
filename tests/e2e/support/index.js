@@ -15,6 +15,11 @@
 
 // Import commands.js using ES2015 syntax:
 import './commands'
+import './istanbul'
+
+beforeEach(() => {
+  cy.viewport('iphone-6')
+})
 
 // Alternatively you can use CommonJS syntax:
 // require('./commands')

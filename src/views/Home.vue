@@ -26,7 +26,7 @@
 </template>
 
 <script>
-import PPopOverMenu from '../components/PopOverMenu'
+import PPopOverMenu from '@/components/PopOverMenu'
 export default {
   name: 'home',
   components: { PPopOverMenu }

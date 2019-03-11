@@ -14,9 +14,6 @@ import { mapMutations } from 'vuex'
 
 export default {
   name: 'p-lang-selector',
-  created () {
-    console.log(this)
-  },
   data () {
     return {
       availableLang: ['en', 'fr']

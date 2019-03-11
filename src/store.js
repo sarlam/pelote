@@ -7,7 +7,7 @@ import VuexPersist from 'vuex-persist'
 Vue.use(Vuex)
 
 const vuexPersist = new VuexPersist({
-  key: 'pelotte',
+  key: 'pelote',
   storage: localStorage
 })
 

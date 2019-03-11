@@ -8,8 +8,10 @@
     "serve": "vue-cli-service serve",
     "build": "vue-cli-service build",
     "lint": "vue-cli-service lint",
-    "test:unit": "vue-cli-service test:unit",
-    "test:e2e": "vue-cli-service test:e2e",
+    "test:unit": "nyc -- vue-cli-service test:unit",
+    "test:e2e": "mkdir -p part_coverage; echo \"{}\" > part_coverage/out.json; vue-cli-service test:e2e --mode test.e2e",
+    "test:report": "nyc report",
+    "sonar": "node .circleci/sonar-scanner.js",
     "cordova-serve-android": "vue-cli-service cordova-serve-android",
     "cordova-build-android": "vue-cli-service cordova-build-android",
     "cordova-prepare": "vue-cli-service cordova-prepare",
@@ -39,14 +41,36 @@
     "@vue/eslint-config-standard": "^4.0.0",
     "@vue/test-utils": "^1.0.0-beta.20",
     "babel-eslint": "^10.0.1",
+    "babel-plugin-istanbul": "^5.1.1",
     "chai": "^4.1.2",
     "eslint": "^5.8.0",
     "eslint-plugin-vue": "^5.0.0",
     "framework7": "^4.0.6",
     "framework7-vue": "^4.0.6",
+    "istanbul-instrumenter-loader": "^3.0.1",
+    "istanbul-lib-coverage": "^2.0.3",
     "node-sass": "^4.9.0",
+    "nyc": "^13.3.0",
     "sass-loader": "^7.1.0",
+    "sonarqube-scanner": "^2.4.0",
     "vue-cli-plugin-cordova": "^2.1.2",
     "vue-template-compiler": "^2.5.21"
+  },
+  "nyc": {
+    "include": [
+      "src/**/*"
+    ],
+    "reporter": [
+      "lcov",
+      "text",
+      "text-summary"
+    ],
+    "extension": [
+      ".js",
+      ".vue"
+    ],
+    "temp-dir": "./part_coverage",
+    "cache": true,
+    "all": true
   }
 }

@@ -5,7 +5,7 @@
 </template>
 
 <script>
-import PIncidentDailyReport from '../../components/IncidentDailyReport'
+import PIncidentDailyReport from '@/components/IncidentDailyReport'
 
 export default {
   components: { PIncidentDailyReport }

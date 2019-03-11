@@ -5,7 +5,7 @@
 </template>
 
 <script>
-import PIncidentForm from '../../components/IncidentForm'
+import PIncidentForm from '@/components/IncidentForm'
 
 export default {
   components: { PIncidentForm }

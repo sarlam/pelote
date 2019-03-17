@@ -1,7 +1,7 @@
 <template>
   <f7-block>
     <f7-block v-if="todayIncidents.length === 0">
-      Your day is going great so far !
+      {{ $t('timeline.empty') }}
     </f7-block>
 
     <div v-for="incident in todayIncidents" :key="incident.date" class="timeline-item">

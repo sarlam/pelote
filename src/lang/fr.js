@@ -7,87 +7,90 @@ export default {
   },
   global: {
     precise: 'Plus Précisement',
-    months: 'January February March April May June July August September October November December',
+    months: 'Janvier Fevrier Mars Avril Mai Juin Juillet Aout Septembre Octobre Novembre Decembre',
     scaleOnSeven: ['1 Very comfortable', '2', '3', '4', '5', '6', '7 very uncomfortable'],
-    add: 'Add'
+    add: 'Ajouter'
+  },
+  timeline: {
+    empty: 'Votre journée se passe sans incident :)'
   },
   add: {
     q1: {
-      title: 'kind of incident',
+      title: 'Quel type de manifestation de sexisme voulez-vous enregistrer ?',
       answers: {
-        A: 'Traditional gender role prejudice and stereotyping',
-        B: 'Demeaning and derogatory comments and behaviors',
-        C: 'Sexual objectification',
-        D: 'Homophobia',
-        E: 'Other'
+        A: 'Stéréotypes et préjugés quant aux rôles de genre',
+        B: 'Remarques et comportements humiliants et dénigrants',
+        C: 'Objectivation sexuelle',
+        D: 'Comportements et remarques homophobes',
+        E: 'Autre'
       },
       1: {
         A: {
-          title: 'Plus Précisement',
+          title: 'Plus précisément, quel genre de propos voulez-vous enregistrer',
           answers: {
-            A: 'Comments indicating that certain roles are more appropriate for either men or women',
-            B: 'Comments indicating that men have greater ability in gender-stereotypic domains',
-            C: 'Comments indicating that women possess stereotypic traits',
-            D: 'Comments where it is assumed that women have different interests and preferences or enjoy different activities',
-            E: 'Expressions of a double standard for men and women',
-            F: 'General dislike of women.'
+            A: 'Certains rôles conviennent davantage aux hommes ou aux femmes',
+            B: 'Les hommes sont plus compétents que les femmes dans certains domaines associés au masculin',
+            C: 'Les femmes ont des traits stéréotypés',
+            D: 'Les centres d\'intérêt, les préférences et les activités de prédilection ne sont pas les mêmes pour les hommes et les femmes. Les femmes n\'ont pas les ont des centres d\'intérêt spécifiques et apprécient des activités différentes des hommes',
+            E: 'Double standard selon le genre',
+            F: 'Aversion à l’égard des femmes'
           }
         },
         B: {
           title: 'Plus Précisement',
           answers: {
-            A: 'use of demeaning labels (such as “bitch” or “chick”),',
-            B: 'making sexist jokes,',
-            C: 'exclusion in conversations,',
-            D: 'exclusion through the use of sexist language,',
-            E: 'violence toward women,',
-            F: 'negative attitudes toward equality.'
+            A: 'Qualifications dénigrantes',
+            B: 'Blagues sexistes',
+            C: 'Exclusion d’une conversation',
+            D: 'Exclusion via l\'utilisation de propos sexistes',
+            E: 'Violence physique',
+            F: 'Attitude négative vis-à-vis de l’égalité entre hommes et femmes'
           }
         },
         C: {
           title: 'Plus Précisement',
           answers: {
-            A: 'Comment that reduce women to her body',
-            B: 'Unwanted flirting,',
-            C: 'Staring, and touching'
+            A: 'Réduction des femmes à leurs corps',
+            B: 'Flirt non souhaité',
+            C: 'Regards et attouchements'
           }
         },
         D: {
-          title: 'Describe the incident'
+          title: 'Décrivez la manifestation de sexisme'
         },
         E: {
-          title: 'Describe the incident'
+          title: 'Décrivez la manifestation de sexisme'
         }
       }
     },
     q2: {
-      title: 'Who is targeted by this incident ?',
+      title: 'Qui est la cible de cette manifestation ?',
       answers: {
-        A: 'me',
-        B: 'someone else',
-        C: 'women in general'
+        A: 'Moi',
+        B: 'Une autre femme',
+        C: 'Les femmes en général'
       }
     },
     q3: {
-      title: 'When did this incident occur ?'
+      title: 'Quand cette manifestation de sexisme a t-elle eu lieu ?'
     },
     q4: {
-      title: 'In which context did this incident occur ?',
+      title: 'Dans quel context ?',
       answers: {
-        A: 'Workplace',
-        B: 'Public space',
-        C: 'Family and friends',
-        D: 'Other'
+        A: 'Au travail',
+        B: 'Dans un espace public',
+        C: 'Avec des proches',
+        D: 'Autre'
       }
     },
     q5: {
-      title: 'Rate the impact this incident had on you',
+      title: 'Quel est le niveau d’impact de cette manifestation sur vous ?',
       answers: {
-        A: 'Very negative',
-        B: 'Negative',
-        C: 'No impact',
-        D: 'Positive',
-        E: 'very positive'
+        A: 'Très négatif',
+        B: 'Négatif',
+        C: 'Sans impact',
+        D: 'Positif',
+        E: 'Très positif'
       }
     },
     q6: {
@@ -101,7 +104,7 @@ export default {
       }
     },
     q7: {
-      title: 'During the incident, what level of comfort you experienced/feel ?'
+      title: 'Durant la manifestation de sexisme, comment vous êtes-vous senti ?'
     },
     q8: {
       title: 'During the incident, what level of comfort you experienced/feel ?'

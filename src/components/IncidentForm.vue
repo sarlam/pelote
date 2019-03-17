@@ -197,6 +197,7 @@
 <script>
 import moment from 'moment'
 import _ from 'lodash'
+import datePickerOptions from './IncidentForn/datePickerHelper'
 
 import { mapMutations } from 'vuex'
 
@@ -223,118 +224,7 @@ function getDefaultData () {
 export default {
   name: 'p-incident-form',
   mounted () {
-    const self = this
-    const months = this.$t('global.months').split(' ')
-    const getTwoDigit = (v) => {
-      return v < 10 ? '0' + v : v
-    }
-
-    const getMomentFromValues = (values) => {
-      const date = `${values[2]}-${getTwoDigit(Number(values[0]) + 1)}-${getTwoDigit(values[1])} ${getTwoDigit(values[3])}:${getTwoDigit(values[4])}`
-      return moment(date)
-    }
-
-    const today = new Date()
-    const initialValues = [
-      today.getMonth(),
-      today.getDate(),
-      today.getFullYear(),
-      today.getHours(),
-      today.getMinutes() < 10 ? '0' + today.getMinutes() : today.getMinutes()
-    ]
-    this.$f7.picker.create({
-      inputEl: '#demo-picker-date',
-      toolbar: true,
-      rotateEffect: true,
-      value: initialValues,
-      formatValue: function (values) {
-        return self.$d(getMomentFromValues(values).toDate(), 'long')
-      },
-      cols: [
-        // Months
-        {
-
-          values: (function () {
-            const val = []
-            for (let i = 0; i <= today.getMonth(); i++) {
-              val.push(i)
-            }
-            return val
-          })(),
-          displayValues: months,
-          textAlign: 'left'
-        },
-        // Days
-        {
-          values: (function () {
-            const val = []
-            for (let i = 1; i <= 31; i++) {
-              val.push(i)
-            }
-            return val
-          })()
-        },
-        // Years
-        {
-          values: (function () {
-            const arr = []
-            for (let i = 2000; i <= today.getFullYear(); i++) {
-              arr.push(i)
-            }
-            return arr
-          })()
-        },
-        // Space divider
-        {
-          divider: true,
-          content: '&nbsp;&nbsp;'
-        },
-        // Hours
-        {
-          values: (function () {
-            const arr = []
-            for (let i = 0; i <= 23; i++) {
-              arr.push(i)
-            }
-            return arr
-          })()
-        },
-        // Divider
-        {
-          divider: true,
-          content: ':',
-          textAlign: 'left'
-        },
-        // Minutes
-        {
-          values: (function () {
-            const arr = []
-            for (let i = 0; i <= 59; i++) {
-              arr.push(i < 10 ? '0' + i : i)
-            }
-            return arr
-          })()
-        }
-      ],
-      on: {
-        change: function (picker, values, displayValues) {
-          const daysInMonth = new Date(picker.value[2], picker.value[0] * 1 + 1, 0).getDate()
-          self.form.q3 = getMomentFromValues(values).format()
-          if (values[1] > daysInMonth) {
-            picker.cols[1].setValue(daysInMonth)
-          }
-          if (getMomentFromValues(values).isAfter(moment().add('5', 'minutes'), 'minutes')) {
-            picker.cols[0].setValue(initialValues[0])
-            picker.cols[1].setValue(initialValues[1])
-            picker.cols[2].setValue(initialValues[2])
-            // divider
-            picker.cols[4].setValue(initialValues[3])
-            // divider
-            picker.cols[6].setValue(initialValues[4])
-          }
-        }
-      }
-    })
+    this.$f7.picker.create(datePickerOptions(this))
   },
   data: getDefaultData,
   watch: {

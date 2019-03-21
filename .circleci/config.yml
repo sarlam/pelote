@@ -108,7 +108,7 @@ jobs:
       - persist_to_workspace:
           root: .
           paths:
-            - part_coverage
+            - part_coverage/out.json
 
   sonar_report:
     docker:

@@ -15,7 +15,7 @@
             {{incident.mDate.getHours()}}:{{incident.mDate.getMinutes()}}
           </div>
           <div class="timeline-item-title">{{$t('add.q1.answers.'+incident.q1)}}</div>
-          <div class="timeline-item-subtitle">{{$t('add.q1.answers.'+incident.q2)}}</div>
+          <div class="timeline-item-subtitle">{{$t(`add.q1.1.${incident.q1}.answers.${incident['q1-1']}`)}}</div>
         </div>
       </div>
     </div>

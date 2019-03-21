@@ -40,9 +40,9 @@ new Vue({
         // Array with app routes
         routes,
         // App Name
-        name: 'pelotte',
+        name: 'pelote',
         // App id
-        id: 'me.jarleton.pelotte',
+        id: 'me.jarleton.pelote',
         // ...,
         material: true
       }

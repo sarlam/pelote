@@ -1,0 +1,320 @@
+# Javascript Node CircleCI 2.0 configuration file
+#
+# Check https://circleci.com/docs/2.0/language-javascript/ for more details
+#
+version: 2
+jobs:
+  lint:
+    docker:
+      # specify the version you desire here
+      - image: circleci/node:10.14
+
+    # Specify service dependencies here if necessary
+    # CircleCI maintains a library of pre-built images
+    # documented at https://circleci.com/docs/2.0/circleci-images/
+    # - image: circleci/mongo:3.4.4
+
+    working_directory: ~/repo
+
+    steps:
+      - checkout
+
+      # Download and cache dependencies
+      - restore_cache:
+          keys:
+            - v1-dependencies-{{ checksum "package.json" }}
+            # fallback to using the latest cache if no exact match is found
+            - v1-dependencies-
+
+      - run: yarn install
+
+      - save_cache:
+          paths:
+            - node_modules
+          key: v1-dependencies-{{ checksum "package.json" }}
+
+      - run: yarn lint --mode=production
+
+  test_unit:
+    docker:
+      # specify the version you desire here
+      - image: circleci/node:10.14
+
+    # Specify service dependencies here if necessary
+    # CircleCI maintains a library of pre-built images
+    # documented at https://circleci.com/docs/2.0/circleci-images/
+    # - image: circleci/mongo:3.4.4
+
+    working_directory: ~/repo
+
+    steps:
+      - checkout
+      - attach_workspace:
+          at: ~/repo
+
+      # Download and cache dependencies
+      - restore_cache:
+          keys:
+            - v1-dependencies-{{ checksum "package.json" }}
+            # fallback to using the latest cache if no exact match is found
+            - v1-dependencies-
+
+      - run: yarn install
+
+      - save_cache:
+          paths:
+            - node_modules
+          key: v1-dependencies-{{ checksum "package.json" }}
+
+      - run: yarn test:unit
+
+      - persist_to_workspace:
+         root: .
+         paths:
+           - part_coverage
+
+  test_e2e:
+    docker:
+      - image: cypress/base:10
+
+    # Specify service dependencies here if necessary
+    # CircleCI maintains a library of pre-built images
+    # documented at https://circleci.com/docs/2.0/circleci-images/
+    # - image: circleci/mongo:3.4.4
+
+    working_directory: ~/repo
+
+    steps:
+      - checkout
+      - attach_workspace:
+          at: ~/repo
+
+      # Download and cache dependencies
+      - restore_cache:
+          keys:
+            - v1-dependencies-{{ checksum "package.json" }}
+            # fallback to using the latest cache if no exact match is found
+            - v1-dependencies-
+
+      - run: yarn install
+
+      - save_cache:
+          paths:
+            - node_modules
+          key: v1-dependencies-{{ checksum "package.json" }}
+
+      - run: yarn test:e2e --headless --record
+
+      - persist_to_workspace:
+          root: .
+          paths:
+            - part_coverage
+
+  sonar_report:
+    docker:
+      # specify the version you desire here
+      - image: circleci/node:10.14
+
+    working_directory: ~/repo
+
+    steps:
+      - checkout
+      - attach_workspace:
+          at: ~/repo
+
+      - restore_cache:
+          keys:
+            - v1-dependencies-{{ checksum "package.json" }}
+            # fallback to using the latest cache if no exact match is found
+            - v1-dependencies-
+
+      - run: yarn install
+
+      - save_cache:
+          paths:
+            - node_modules
+          key: v1-dependencies-{{ checksum "package.json" }}
+      - run:
+          name: Set PR number
+          command: |
+            echo 'export CIRCLE_PR_NUMBER="${CIRCLE_PR_NUMBER:-${CIRCLE_PULL_REQUEST##*/}}"' >> $BASH_ENV
+            source $BASH_ENV
+            echo $CIRCLE_PR_NUMBER
+
+      - run:
+          name: Generate merged test reports
+          command: yarn test:report
+
+      - run:
+          name: Launch Sonar-scanner
+          command: yarn sonar
+
+  build_web:
+    docker:
+      # specify the version you desire here
+      - image: circleci/node:10.14
+
+    # Specify service dependencies here if necessary
+    # CircleCI maintains a library of pre-built images
+    # documented at https://circleci.com/docs/2.0/circleci-images/
+    # - image: circleci/mongo:3.4.4
+
+    working_directory: ~/repo
+
+    steps:
+      - checkout
+
+      # Download and cache dependencies
+      - restore_cache:
+          keys:
+            - v1-dependencies-{{ checksum "package.json" }}
+            # fallback to using the latest cache if no exact match is found
+            - v1-dependencies-
+
+      - run: yarn install
+
+      - save_cache:
+          paths:
+            - node_modules
+          key: v1-dependencies-{{ checksum "package.json" }}
+
+      - run: yarn build
+
+      - store_artifacts:
+          path: dist/
+          destination: dist
+
+  build_android:
+    docker:
+      # specify the version you desire here
+      - image: circleci/node:10.14
+      - image: circleci/android:api-24
+
+    # Specify service dependencies here if necessary
+    # CircleCI maintains a library of pre-built images
+    # documented at https://circleci.com/docs/2.0/circleci-images/
+    # - image: circleci/mongo:3.4.4
+
+    working_directory: ~/repo
+
+    steps:
+      - checkout
+
+      # Download and cache dependencies
+      - restore_cache:
+          keys:
+            - v1-dependencies-{{ checksum "package.json" }}
+            # fallback to using the latest cache if no exact match is found
+            - v1-dependencies-
+
+      - run: yarn install
+
+      - save_cache:
+          paths:
+            - node_modules
+          key: v1-dependencies-{{ checksum "package.json" }}
+
+      - run: yarn build
+
+      - run: yarn cordova-prepare
+
+      - run: yarn cordova-build-android
+
+  build_ios:
+    macos:
+      xcode: "10.1"
+
+    working_directory: ~/repo
+
+    steps:
+      - checkout
+
+      # Download and cache dependencies
+      - restore_cache:
+          keys:
+            - v1-dependencies-{{ checksum "package.json" }}
+            # fallback to using the latest cache if no exact match is found
+            - v1-dependencies-
+
+      - run: yarn install
+
+      - save_cache:
+          paths:
+            - node_modules
+          key: v1-dependencies-{{ checksum "package.json" }}
+
+      - run: yarn build
+
+      - run: yarn cordova-prepare
+
+      - run: yarn cordova-build-ios
+
+workflows:
+  version: 2
+  lint_test_build_all:
+    jobs:
+      - lint
+      - test_unit:
+          requires:
+            - lint
+      - test_e2e:
+          requires:
+            - lint
+      - sonar_report:
+          requires:
+            - test_unit
+            - test_e2e
+      - build_web:
+          requires:
+            - sonar_report
+          filters:
+            branches:
+              only:  # only branches matching the below regex filters will run
+                - develop
+                - /release\/*/
+                - master
+
+#      - build_android:
+#          requires:
+#            - sonar_report
+#      - build_ios:
+#          requires:
+#            - sonar_report
+
+#version: 2
+#
+#workflows:
+#  version: 2
+#  build:
+#    jobs:
+#      - macos_build
+#      - linux_build
+#  tag_build:
+#    jobs:
+#      - linux_build:
+#          filters:
+#            tags:
+#              only:
+#                - "/.*/"
+#            branches:
+#              ignore: /.*/
+#
+#jobs:
+#  macos_build:
+#    macos:
+#      xcode: "8.3.3"
+#    steps:
+#      - checkout
+#      - run:
+#          name: ddev install (macos)
+#          command: brew update && brew tap drud/ddev && brew install ddev
+#      - run: ddev version
+#  linux_build:
+#    machine:
+#      image: circleci/classic:201708-01
+#    steps:
+#      - checkout
+#      - run:
+#          name: curl ddev install
+#          command: curl https://raw.githubusercontent.com/drud/ddev/master/install_ddev.sh | bash
+#      - run: ddev version

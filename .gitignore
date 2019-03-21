@@ -27,3 +27,9 @@ yarn-error.log*
 /src-cordova/platforms
 /src-cordova/plugins
 /public/cordova.js
+
+# istanbul
+
+coverage/
+.nyc_output/
+part_coverage/

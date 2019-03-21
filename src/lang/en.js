@@ -11,6 +11,9 @@ export default {
     scaleOnSeven: ['1 Very comfortable', '2', '3', '4', '5', '6', '7 very uncomfortable'],
     add: 'Add'
   },
+  timeline: {
+    empty: 'Your day is going great so far !'
+  },
   add: {
     q1: {
       title: 'kind of incident',

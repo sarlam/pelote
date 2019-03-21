@@ -2,42 +2,29 @@
   <f7-block>
     <h1>Présentation</h1>
     <p>
-      Le sexisme est un phénomène sous jacent aux inégalités entre les hommes
-      et les femmes et aux violences dirigées vers les femmes. Parmi les formes
-      que prend le sexisme, le sexisme ordinaire prenant place au quotidien a
-      des répercussions sur l’estime de soi, le niveau d’anxiété et le bien-être
-      général.
+      Sexism is a phenomenon underlying inequalities between men and women and violence towards
+      women. Among the forms taken by sexism, ordinary/everyday sexism has impacts on self-esteem,
+      anxiety level and overall well-being.
     </p>
     <p>
-      Pour lutter contre les effets de ce sexisme ordinaire, cette application vise à :
-
+      To fight against the effects of this everyday/ordinary sexism, this application aims to :
     </p>
     <ul>
-      <li>Permettre aux femmes et aux hommes de prendre conscience de son niveau d’exposition;</li>
-      <li>Partager afin d’obtenir du soutien moral, de permettre à d’autres de prendre conscience du
-        phénomène et ainsi agir contre le sexisme ordinaire;
+      <li>Provide a simple view of the level of exposure</li>
+      <li>
+        Share the reviews in order to obtain social support, and allow others to become aware of
+        the phenomenon and thus act against it
       </li>
-      <li>Contribuer à la recherche en autorisant la transmission de ces données auprès de
-        chercheur.e.s.
+      <li>
+        Contribute to research by authorizing the transmission of these data to researchers.
       </li>
-    </ul>
-
-    <p>
-      Cette appli vous permet donc :
-    </p>
-    <ul>
-      <li>d’enregistrer/consigner/répertorier</li>
-      <li>de visualiser simplement</li>
-      <li>de partager avec vos proches</li>
-      <li>de rendre accessibles à des fins de recherche</li>
-      <li>les manifestations de sexisme ordinaire dont vous êtes la cible ou dont vous êtes témoin.</li>
     </ul>
 
     <h1>Infos</h1>
     <h2>Version {{ info.version }}</h2>
     <h2>License</h2>
-    <p>Cette application vous est distribue sous license <b>GPLv3</b>, elle vous ai fourni sans aucune forme de garantie.</p>
-    <p>Vous pouvez a tout moment acceder au code source de cette application sur <a href="#" @click="openGithub">github - {{ info.repository }}</a></p>
+    <p>This application is released under <b>GPLv3</b> license. There is no warranty.</p>
+    <p>The source code of this application is available on <a href="#" @click="openGithub">github - {{ info.repository }}</a></p>
 
     <license></license>
   </f7-block>

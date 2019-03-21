@@ -21,17 +21,6 @@
       </li>
     </ul>
 
-    <p>
-      Cette appli vous permet donc :
-    </p>
-    <ul>
-      <li>d’enregistrer/consigner/répertorier</li>
-      <li>de visualiser simplement</li>
-      <li>de partager avec vos proches</li>
-      <li>de rendre accessibles à des fins de recherche</li>
-      <li>les manifestations de sexisme ordinaire dont vous êtes la cible ou dont vous êtes témoin.</li>
-    </ul>
-
     <h1>Infos</h1>
     <h2>Version {{ info.version }}</h2>
     <h2>License</h2>

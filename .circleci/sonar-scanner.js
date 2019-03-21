@@ -1,8 +1,11 @@
 const sonarqubeScanner = require('sonarqube-scanner')
+const _ = require('lodash')
 
-console.log('PR Number from sonar scanner', process.env.CIRCLE_PR_NUMBER)
+const itIsAPR = _.toInteger(process.env.CIRCLE_PR_NUMBER) !== 0
 
-const branchSettings = process.env.CIRCLE_PR_NUMBER !== undefined
+console.log('PR Number from sonar scanner, is it a PR ?', itIsAPR)
+
+const branchSettings = itIsAPR
   ? {
     'sonar.pullrequest.base': 'develop',
     'sonar.pullrequest.branch': process.env.CIRCLE_BRANCH,
